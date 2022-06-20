@@ -2,42 +2,47 @@ package user;
 
 import base.BaseTest;
 import org.testng.Assert;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pages.NewsletterForm;
 import pages.common.Fields;
 
+
 public class NewsletterTest extends BaseTest {
+    private NewsletterForm newsletterForm;
+    private Fields fields;
+
+    @BeforeMethod
+    public void beforeMethod() {
+        this.newsletterForm = new NewsletterForm(driver);
+        this.fields = new Fields(driver);
+
+    }
 
     @Test
-    public void shouldSingInNewsletter(){
-        NewsletterForm newsletterForm = new NewsletterForm(driver);
-        Fields fields = new Fields(driver);
+    public void shouldSingInNewsletter() {
 
         fields.setRandomAddressEmail();
         newsletterForm.clickSubscribeButton();
 
-        Assert.assertEquals(newsletterForm.showSucceedAlertAfterSendForm(),"You have successfully subscribed to this newsletter.");
+        Assert.assertEquals(newsletterForm.showSucceedAlertAfterSendForm(), "You have successfully subscribed to this newsletter.");
     }
 
     @Test
-    public void showValidationPopUp(){
-        NewsletterForm newsletterForm = new NewsletterForm(driver);
-        Fields fields = new Fields(driver);
+    public void showValidationPopUp() {
 
         newsletterForm.clickSubscribeButton();
 
-        Assert.assertEquals(fields.getValidationMessageFromAddressEmail(), "Wypełnij to pole." );
+        Assert.assertEquals(fields.getValidationMessageFromAddressEmail(), "Wypełnij to pole.");
     }
 
     @Test
-    public void showNewsletterPlaceholder(){
-        NewsletterForm newsletterForm = new NewsletterForm(driver);
+    public void showNewsletterPlaceholder() {
         Assert.assertTrue(newsletterForm.placeholderIsDisplayed());
     }
 
     @Test
-    public void newsletterIsVisibleOfMainPage(){
-        NewsletterForm newsletterForm = new NewsletterForm(driver);
+    public void newsletterIsVisibleOfMainPage() {
         Assert.assertTrue(newsletterForm.getNewsletterLabelInformation());
     }
 }

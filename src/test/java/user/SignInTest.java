@@ -2,6 +2,7 @@ package user;
 
 import base.BaseTest;
 import models.SocialTitle;
+import org.testng.annotations.BeforeMethod;
 import pages.RegistrationPage;
 import pages.common.Fields;
 import pages.common.MenuPage;
@@ -12,11 +13,21 @@ import pages.SignInPage;
 import java.time.LocalDate;
 
 public class SignInTest extends BaseTest {
+    private MenuPage menuPage;
+    private SignInPage signInPage;
+    private RegistrationPage registrationPage;
+    private Fields fields;
+
+    @BeforeMethod
+    public void beforeMethod() {
+        this.menuPage = new MenuPage(driver);
+        this.signInPage = new SignInPage(driver);
+        this.registrationPage = new RegistrationPage(driver);
+        this.fields = new Fields(driver);
+    }
 
     @Test
-    public void goToSignInPage(){
-        MenuPage menuPage = new MenuPage(driver);
-        SignInPage signInPage = new SignInPage(driver);
+    public void goToSignInPage() {
 
         menuPage.goToSignIn();
 
@@ -24,11 +35,7 @@ public class SignInTest extends BaseTest {
     }
 
     @Test
-    public void shouldSignInNewUser(){
-        SignInPage signInPage = new SignInPage(driver);
-        MenuPage menuPage = new MenuPage(driver);
-        RegistrationPage registrationPage = new RegistrationPage(driver);
-        Fields fields = new Fields(driver);
+    public void shouldSignInNewUser() {
 
         menuPage.goToSignIn();
         registrationPage.goToRegisterForm();
@@ -49,14 +56,11 @@ public class SignInTest extends BaseTest {
         fields.setRandomPassword(signInPage.setRandomPassword());
         signInPage.clickSignInButton();
 
-        Assert.assertEquals((signInPage.getRandomName()+ " " + signInPage.getRandomLastName()), menuPage.getAccountName());
+        Assert.assertEquals((signInPage.getRandomName() + " " + signInPage.getRandomLastName()), menuPage.getAccountName());
     }
 
     @Test
-    public void showValidationPopUpForEmail(){
-        MenuPage menuPage = new MenuPage(driver);
-        SignInPage signInPage = new SignInPage(driver);
-        Fields fields = new Fields(driver);
+    public void showValidationPopUpForEmail() {
 
         menuPage.goToSignIn();
         signInPage.clickSignInButton();

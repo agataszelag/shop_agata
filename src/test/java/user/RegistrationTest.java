@@ -1,6 +1,7 @@
 package user;
 
 import base.BaseTest;
+import org.testng.annotations.BeforeMethod;
 import pages.SignInPage;
 import pages.common.Fields;
 import pages.common.MenuPage;
@@ -14,10 +15,23 @@ import java.time.LocalDate;
 
 public class RegistrationTest extends BaseTest {
 
+    private MenuPage menuPage;
+    private RegistrationPage registrationPage;
+    private Fields fields;
+    private SignInPage signInPage;
+
+
+    @BeforeMethod
+    public void beforeMethod(){
+        this.menuPage = new MenuPage(driver);
+        this.registrationPage = new RegistrationPage(driver);
+        this.fields = new Fields(driver);
+        this.signInPage = new SignInPage(driver);
+    }
+
+
     @Test
     public void goToAnRegistrationForm() {
-        MenuPage menuPage = new MenuPage(driver);
-        RegistrationPage registrationPage = new RegistrationPage(driver);
 
         menuPage.goToSignIn();
         registrationPage.goToRegisterForm();
@@ -27,9 +41,6 @@ public class RegistrationTest extends BaseTest {
 
     @Test
     public void shouldRegisterNewUser() {
-        MenuPage menuPage = new MenuPage(driver);
-        Fields fields = new Fields(driver);
-        RegistrationPage registrationPage = new RegistrationPage(driver);
 
         menuPage.goToSignIn();
         registrationPage.goToRegisterForm();
@@ -50,8 +61,6 @@ public class RegistrationTest extends BaseTest {
 
     @Test
     public void showValidationPopUpForFirstName() {
-        MenuPage menuPage = new MenuPage(driver);
-        RegistrationPage registrationPage = new RegistrationPage(driver);
 
         menuPage.goToSignIn();
         registrationPage.goToRegisterForm();
@@ -63,8 +72,6 @@ public class RegistrationTest extends BaseTest {
 
     @Test
     public void showValidationPopUpForLastName(){
-        MenuPage menuPage = new MenuPage(driver);
-        RegistrationPage registrationPage = new RegistrationPage(driver);
 
         menuPage.goToSignIn();
         registrationPage.goToRegisterForm();
@@ -76,13 +83,10 @@ public class RegistrationTest extends BaseTest {
 
     @Test
     public void showValidationPopUpForCustomerDataPrivacy(){
-        MenuPage menuPage = new MenuPage(driver);
-        Fields fields = new Fields(driver);
-        RegistrationPage registrationPage = new RegistrationPage(driver);
 
         menuPage.goToSignIn();
         registrationPage.goToRegisterForm();
-        registrationPage.selectSocialTitle(SocialTitle.MR);
+        registrationPage.selectSocialTitle(SocialTitle.MRS);
         registrationPage.setFirstName(BasePage.getRandomChar());
         registrationPage.setLastName(BasePage.getRandomChar());
         fields.setRandomAddressEmail();
@@ -95,9 +99,6 @@ public class RegistrationTest extends BaseTest {
 
     @Test
     public void shouldComeBackToLogIn(){
-        MenuPage menuPage = new MenuPage(driver);
-        RegistrationPage registrationPage = new RegistrationPage(driver);
-        SignInPage signInPage = new SignInPage(driver);
 
         menuPage.goToSignIn();
         registrationPage.goToRegisterForm();

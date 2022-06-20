@@ -6,7 +6,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 
-public class ResetPasswordPage extends BasePage{
+public class ResetPasswordPage extends BasePage {
     public ResetPasswordPage(WebDriver driver) {
         super(driver);
     }
@@ -24,23 +24,23 @@ public class ResetPasswordPage extends BasePage{
     private WebElement alertSuccess;
 
 
-    public String showResetPasswordPageHeader(){
+    public String showResetPasswordPageHeader() {
         return resetPasswordPageHeader.getText();
     }
 
-    public String goToResetPasswordForm(){
-       return resetPasswordPageHeader.getText();
+    public String goToResetPasswordForm() {
+        return resetPasswordPageHeader.getText();
     }
 
-    public void clickSendResetLinkButton(){
+    public void clickSendResetLinkButton() {
         click(sendResetLinkButton);
     }
 
-    public void clickBackToLoginButton(){
+    public void clickBackToLoginButton() {
         click(backToLoginButton);
     }
 
-    public String showAlertSuccess(){
+    public String showAlertSuccess() {
         return alertSuccess.getText();
     }
 }

@@ -57,27 +57,23 @@ public class RegistrationPage extends BasePage {
         return accountPageHeader.getText();
     }
 
-    public RegistrationPage selectSocialTitle(SocialTitle socialTitle) {
+    public void selectSocialTitle(SocialTitle socialTitle) {
         socialTitles.get(socialTitle.getIndex()).click();
-        return this;
     }
 
-    public RegistrationPage setFirstName(String firstNames){
+    public void setFirstName(String firstNames){
         firstName.sendKeys(firstNames);
-        return this;
     }
 
-    public RegistrationPage setLastName(String lastNames){
+    public void setLastName(String lastNames){
         lastName.sendKeys(lastNames);
-        return this;
     }
 
-    public RegistrationPage setBirthdayDate(LocalDate birthdayDate){
+    public void setBirthdayDate(LocalDate birthdayDate){
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
 
         String birthdayDateToString = birthdayDate.format(formatter);
         birthday.sendKeys(birthdayDateToString);
-        return this;
     }
 
     public void selectCheckboxReceiveOffersFromOurPartners(){

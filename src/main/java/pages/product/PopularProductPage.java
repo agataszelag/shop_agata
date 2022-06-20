@@ -5,8 +5,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import pages.BasePage;
 
-public class PopularProduct extends BasePage {
-    public PopularProduct(WebDriver driver) {
+public class PopularProductPage extends BasePage {
+    public PopularProductPage(WebDriver driver) {
         super(driver);
     }
 

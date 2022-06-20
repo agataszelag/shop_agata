@@ -4,11 +4,15 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class SignInPage extends BasePage{
-
+public class SignInPage extends BasePage {
     public SignInPage(WebDriver driver) {
         super(driver);
     }
+
+    String randomEmail = BasePage.getRandomEmail();
+    String randomPassword = BasePage.getRandomChar();
+    String randomName = BasePage.getRandomChar();
+    String randomLastName = BasePage.getRandomChar();
 
     @FindBy(css = "#main>.page-header>h1")
     private WebElement signUpPageHeader;
@@ -19,37 +23,31 @@ public class SignInPage extends BasePage{
     @FindBy(css = "a[href*='password']")
     private WebElement forgotPasswordButton;
 
-    String randomEmail = BasePage.getRandomEmail();
-    String randomPassword = BasePage.getRandomChar();
-    String randomName = BasePage.getRandomChar();
-    String randomLastName = BasePage.getRandomChar();
-
-
-    public String getSignUpPageHeader(){
+    public String getSignUpPageHeader() {
         return signUpPageHeader.getText();
     }
 
-    public void clickSignInButton(){
+    public void clickSignInButton() {
         click(signInButton);
     }
 
-    public String setRandomPassword(){
+    public String setRandomPassword() {
         return randomPassword;
     }
 
-    public String setRandomAddressEmail(){
+    public String setRandomAddressEmail() {
         return randomEmail;
     }
 
-    public String getRandomName(){
+    public String getRandomName() {
         return randomName;
     }
 
-    public String getRandomLastName(){
+    public String getRandomLastName() {
         return randomLastName;
     }
 
-    public void clickForgotPasswordButton(){
+    public void clickForgotPasswordButton() {
         click(forgotPasswordButton);
     }
 }

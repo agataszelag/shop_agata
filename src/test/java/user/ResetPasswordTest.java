@@ -2,6 +2,7 @@ package user;
 
 import base.BaseTest;
 import org.testng.Assert;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pages.ResetPasswordPage;
 import pages.SignInPage;
@@ -9,12 +10,22 @@ import pages.common.Fields;
 import pages.common.MenuPage;
 
 public class ResetPasswordTest extends BaseTest {
+    private MenuPage menuPage;
+    private SignInPage signInPage;
+    private ResetPasswordPage resetPasswordPage;
+    private Fields fields;
+
+
+    @BeforeMethod
+    public void beforeMethod() {
+        this.menuPage = new MenuPage(driver);
+        this.signInPage = new SignInPage(driver);
+        this.resetPasswordPage = new ResetPasswordPage(driver);
+        this.fields = new Fields(driver);
+    }
 
     @Test
-    public void goToResetPasswordPage(){
-        MenuPage menuPage = new MenuPage(driver);
-        SignInPage signInPage = new SignInPage(driver);
-        ResetPasswordPage resetPasswordPage = new ResetPasswordPage(driver);
+    public void goToResetPasswordPage() {
 
         menuPage.goToSignIn();
         signInPage.clickForgotPasswordButton();
@@ -23,11 +34,7 @@ public class ResetPasswordTest extends BaseTest {
     }
 
     @Test
-    public void shouldResetPassword(){
-        MenuPage menuPage = new MenuPage(driver);
-        SignInPage signInPage = new SignInPage(driver);
-        Fields fields = new Fields(driver);
-        ResetPasswordPage resetPasswordPage = new ResetPasswordPage(driver);
+    public void shouldResetPassword() {
 
         menuPage.goToSignIn();
         signInPage.clickForgotPasswordButton();
@@ -35,6 +42,6 @@ public class ResetPasswordTest extends BaseTest {
         resetPasswordPage.clickSendResetLinkButton();
 
         Assert.assertEquals(resetPasswordPage.showAlertSuccess(), "If this email address has been registered in our shop," +
-                " you will receive a link to reset your password at " + signInPage.setRandomAddressEmail()+ ".");
+                " you will receive a link to reset your password at " + signInPage.setRandomAddressEmail() + ".");
     }
 }

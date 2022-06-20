@@ -9,7 +9,10 @@ import java.time.Duration;
 import java.util.Random;
 
 public class BasePage {
-
+    public static final int MAX_WAIT_TIME = 15;
+    private static final int MAX_INT_GENERATED =  1000;
+    public static final int NUMBER_OF_CHARACTERS = 8;
+    public static final int MAX_INT_VALUE = 5;
     public WebDriver driver;
     static Random random = new Random();
     public WebDriverWait wait;
@@ -17,7 +20,7 @@ public class BasePage {
     public BasePage(WebDriver driver){
         PageFactory.initElements(driver,this);
         this.driver = driver;
-        wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+        wait = new WebDriverWait(driver, Duration.ofSeconds(MAX_WAIT_TIME));
     }
 
     public void click(WebElement element){
@@ -26,12 +29,16 @@ public class BasePage {
     }
 
     public static String getRandomEmail(){
-        int randomInt = random.nextInt(1000);
+        int randomInt = random.nextInt(MAX_INT_GENERATED);
         return "username" + getRandomChar() + randomInt + "@test.pl";
     }
 
     public static String getRandomChar(){
-        return RandomStringUtils.randomAlphabetic(8);
+        return RandomStringUtils.randomAlphabetic(NUMBER_OF_CHARACTERS);
+    }
+
+    public static int getRandomIntValue(){
+        return random.nextInt(MAX_INT_VALUE);
     }
 
     public void waitToBeClickable(WebElement element){
@@ -41,4 +48,9 @@ public class BasePage {
     public void waitToVisibility(WebElement element){
         wait.until(ExpectedConditions.visibilityOf(element));
     }
+
+    public void sendKeysWithClear(WebElement element){
+        element.clear();
+    }
+
 }

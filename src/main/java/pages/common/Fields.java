@@ -5,7 +5,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import pages.BasePage;
 
-
 public class Fields extends BasePage {
     public Fields(WebDriver driver) {
         super(driver);
@@ -17,25 +16,32 @@ public class Fields extends BasePage {
     @FindBy(name = "password")
     private WebElement password;
 
+    @FindBy(css = ".card-block > .h1")
+    private WebElement cardBlockCategory;
 
-    public void setRandomAddressEmail(){
+
+    public void setRandomAddressEmail() {
         addressEmail.sendKeys(BasePage.getRandomEmail());
     }
 
-    public void setRandomAddressEmail(String email){
+    public void setRandomAddressEmail(String email) {
         addressEmail.sendKeys(email);
     }
 
-    public String getValidationMessageFromAddressEmail(){
+    public String getValidationMessageFromAddressEmail() {
         return addressEmail.getAttribute("validationMessage");
     }
 
-    public void setRandomPassword(String passwords){
+    public void setRandomPassword(String passwords) {
         password.sendKeys(passwords);
     }
 
-    public void setRandomPassword(){
+    public void setRandomPassword() {
         password.sendKeys(BasePage.getRandomChar());
+    }
+
+    public String getCardBlockCategory(){
+        return cardBlockCategory.getText();
     }
 
     /*

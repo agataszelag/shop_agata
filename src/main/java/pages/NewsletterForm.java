@@ -23,20 +23,20 @@ public class NewsletterForm extends BasePage {
     private WebElement newsletterLabelInformation;
 
 
-    public void clickSubscribeButton(){
+    public void clickSubscribeButton() {
         click(subscribeButton);
     }
 
-    public String showSucceedAlertAfterSendForm(){
+    public String showSucceedAlertAfterSendForm() {
         waitToVisibility(succeesAlert);
         return succeesAlert.getText();
     }
 
-    public boolean placeholderIsDisplayed(){
+    public boolean placeholderIsDisplayed() {
         return placeholder.isDisplayed();
     }
 
-    public boolean getNewsletterLabelInformation(){
+    public boolean getNewsletterLabelInformation() {
         return newsletterLabelInformation.isDisplayed();
     }
 }
