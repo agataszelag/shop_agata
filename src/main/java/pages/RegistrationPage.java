@@ -77,19 +77,19 @@ public class RegistrationPage extends BasePage {
     }
 
     public void selectCheckboxReceiveOffersFromOurPartners(){
-        click(checkboxReceiveOffersFromOurPartners);
+        checkboxReceiveOffersFromOurPartners.click();
     }
 
     public void selectCustomerPrivacy(){
-        click(checkboxCustomerPrivacy);
+        checkboxCustomerPrivacy.click();
     }
 
     public void selectSignUpForOurNewsletter(){
-        click(checkboxSignUpForOurNewsletter);
+        checkboxSignUpForOurNewsletter.click();
     }
 
     public void selectPrivatePolicy(){
-        click(checkBoxPrivatePolicy);
+        checkBoxPrivatePolicy.click();
     }
 
     public void clickSaveButton(){

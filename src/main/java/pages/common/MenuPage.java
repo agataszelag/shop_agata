@@ -87,7 +87,7 @@ public class MenuPage extends BasePage {
 
     public void clickMenSubcategory(){
         actions.moveToElement(clothesMainCategory).build().perform();
-        click(menSubcategory);
+        menSubcategory.click();
     }
 
     public void clickWomenSubcategory(){

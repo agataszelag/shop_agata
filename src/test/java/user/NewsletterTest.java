@@ -33,7 +33,7 @@ public class NewsletterTest extends BaseTest {
 
         newsletterForm.clickSubscribeButton();
 
-        Assert.assertEquals(fields.getValidationMessageFromAddressEmail(), "Wypełnij to pole.");
+        Assert.assertEquals(fields.getValidationMessageFromAddressEmail(), "Please fill out this field.");
     }
 
     @Test

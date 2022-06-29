@@ -1,6 +1,7 @@
 package models;
 
-public enum SocialTitle {
+public enum
+SocialTitle {
 
     MR(0), MRS(1);
 

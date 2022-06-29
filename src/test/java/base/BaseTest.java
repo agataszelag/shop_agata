@@ -29,10 +29,12 @@ public class BaseTest {
         driver.get(HOST_ADDRESS + MAIN_PAGE);
     }
 
+/*
     @AfterMethod
     public void tearDown() {
         driver.quit();
     }
+*/
 
 }
 
