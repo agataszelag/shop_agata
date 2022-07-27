@@ -1,9 +1,10 @@
-package pages;
+package pages.form;
 
 import models.SocialTitle;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import pages.BasePage;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
@@ -15,37 +16,26 @@ public class RegistrationPage extends BasePage {
 
     @FindBy(className = "no-account")
     public WebElement createAccountButton;
-
     @FindBy(css = ".page-header>h1")
     public WebElement accountPageHeader;
-
     @FindBy(name = "id_gender")
     public List<WebElement> socialTitles;
-
     @FindBy(name = "firstname")
     public WebElement firstName;
-
     @FindBy(name = "lastname")
     public WebElement lastName;
-
     @FindBy(name = "birthday")
     public WebElement birthday;
-
     @FindBy(name = "optin")
     public WebElement checkboxReceiveOffersFromOurPartners;
-
     @FindBy(name = "customer_privacy")
     public WebElement checkboxCustomerPrivacy;
-
     @FindBy(name = "newsletter")
     public WebElement checkboxSignUpForOurNewsletter;
-
     @FindBy(name = "psgdpr")
     public WebElement checkBoxPrivatePolicy;
-
     @FindBy(className = "btn-primary")
     public WebElement saveButton;
-
     @FindBy(css = "a[href*='authentication']")
     public WebElement logInInsteadButton;
 

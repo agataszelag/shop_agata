@@ -1,12 +1,14 @@
 package pages;
 import org.apache.commons.lang3.RandomStringUtils;
+import org.openqa.selenium.By;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.awt.event.WindowAdapter;
 import java.time.Duration;
 import java.util.Random;
 
@@ -19,6 +21,7 @@ public class BasePage {
     static Random random = new Random();
     public WebDriverWait wait;
 
+    //private String locator;
 
     public BasePage(WebDriver driver){
         PageFactory.initElements(driver,this);
@@ -29,6 +32,22 @@ public class BasePage {
     public void click(WebElement element){
         waitToBeClickable(element);
         element.click();
+    }
+
+    public boolean retryingFindClick(By by) {
+        boolean result = false;
+        int attempts = 0;
+        while(attempts < 2) {
+            try {
+                driver.findElement(by).click();
+                result = true;
+                break;
+            } catch(StaleElementReferenceException e) {
+                System.out.println("StaleElementReferenceException");
+            }
+            attempts++;
+        }
+        return result;
     }
 
     public static String getRandomEmail(){
@@ -51,9 +70,14 @@ public class BasePage {
     public void waitToVisibility(WebElement element){
         wait.until(ExpectedConditions.visibilityOf(element));
     }
-
+    public void waitToAttributeContainsValue(WebElement element, String attribute, String value){
+        wait.until(ExpectedConditions.attributeContains(element, attribute, value));
+    }
     public void sendKeysWithClear(WebElement element){
         element.clear();
     }
 
+    public void waitToVisibilityElementLocated(String locator){
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(locator)));
+    }
 }

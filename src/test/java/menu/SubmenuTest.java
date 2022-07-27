@@ -10,6 +10,11 @@ import pages.common.MenuPage;
 public class SubmenuTest extends BaseTest {
     private MenuPage menuPage;
     private Fields fields;
+    private static final String MEN_SUBCATEGORY_TITLE = "MEN";
+    private static final String WOMEN_SUBCATEGORY_TITLE = "WOMEN";
+    private static final String STATIONERY_SUBCATEGORY_TITLE = "STATIONERY";
+    private static final String HOME_ACCESSORIES_SUBCATEGORY_TITLE = "HOME ACCESSORIES";
+
 
     @BeforeMethod
     public void beforeMethod(){
@@ -18,26 +23,38 @@ public class SubmenuTest extends BaseTest {
     }
 
     @Test
-    public void clickMenSubcategory(){
+    public void goToMenSubcategory(){
+        // given & when
         menuPage.clickMenSubcategory();
-        Assert.assertEquals(fields.getCardBlockCategory(), "MEN");
+
+        //then
+        Assert.assertEquals(fields.getCardBlockCategory(), MEN_SUBCATEGORY_TITLE);
     }
 
     @Test
-    public void clickWomenSubcategory(){
+    public void goToWomenSubcategory(){
+        // given & when
         menuPage.clickWomenSubcategory();
-        Assert.assertEquals(fields.getCardBlockCategory(), "WOMEN");
+
+        //then
+        Assert.assertEquals(fields.getCardBlockCategory(), WOMEN_SUBCATEGORY_TITLE);
     }
 
     @Test
-    public void clickStationerySubcategory(){
+    public void goToStationerySubcategory(){
+        // given & when
         menuPage.clickStationerySubcategory();
-        Assert.assertEquals(fields.getCardBlockCategory(), "STATIONERY");
+
+        //then
+        Assert.assertEquals(fields.getCardBlockCategory(), STATIONERY_SUBCATEGORY_TITLE);
     }
 
     @Test
-    public void homeAccessoriesStationerySubcategory(){
+    public void goToHomeAccessoriesSubcategory(){
+        // given & when
         menuPage.clickHomeAccessoriesSubcategory();
-        Assert.assertEquals(fields.getCardBlockCategory(), "HOME ACCESSORIES");
+
+        //then
+        Assert.assertEquals(fields.getCardBlockCategory(), HOME_ACCESSORIES_SUBCATEGORY_TITLE);
     }
 }

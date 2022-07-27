@@ -1,24 +1,21 @@
-package pages;
+package pages.form;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import pages.BasePage;
 
 public class NewsletterForm extends BasePage {
     public NewsletterForm(WebDriver driver) {
         super(driver);
     }
 
-
     @FindBy(name = "submitNewsletter")
     private WebElement subscribeButton;
-
     @FindBy(className = "block_newsletter_alert")
     private WebElement succeesAlert;
-
     @FindBy(css = "input[placeholder='Your email address']")
     private WebElement placeholder;
-
     @FindBy(id = "block-newsletter-label")
     private WebElement newsletterLabelInformation;
 

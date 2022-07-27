@@ -12,10 +12,8 @@ public class Fields extends BasePage {
 
     @FindBy(name = "email")
     private WebElement addressEmail;
-
     @FindBy(name = "password")
     private WebElement password;
-
     @FindBy(css = ".card-block > .h1")
     private WebElement cardBlockCategory;
 

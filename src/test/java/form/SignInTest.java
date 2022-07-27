@@ -1,9 +1,9 @@
-package user;
+package form;
 
 import base.BaseTest;
 import models.SocialTitle;
 import org.testng.annotations.BeforeMethod;
-import pages.RegistrationPage;
+import pages.form.RegistrationPage;
 import pages.common.Fields;
 import pages.common.MenuPage;
 import org.testng.Assert;
@@ -17,6 +17,7 @@ public class SignInTest extends BaseTest {
     private SignInPage signInPage;
     private RegistrationPage registrationPage;
     private Fields fields;
+    private static final String SUCCESS_VALIDATION_MESSAGE = "Wypełnij to pole.";
 
     @BeforeMethod
     public void beforeMethod() {
@@ -27,16 +28,8 @@ public class SignInTest extends BaseTest {
     }
 
     @Test
-    public void goToSignInPage() {
-
-        menuPage.goToSignIn();
-
-        Assert.assertEquals("Log in to your account", signInPage.getSignUpPageHeader());
-    }
-
-    @Test
     public void shouldSignInNewUser() {
-
+        //given
         menuPage.goToSignIn();
         registrationPage.goToRegisterForm();
         registrationPage.selectSocialTitle(SocialTitle.MR);
@@ -52,20 +45,25 @@ public class SignInTest extends BaseTest {
         registrationPage.clickSaveButton();
         menuPage.clickSignOutButton();
         menuPage.goToSignIn();
+
+        //when
         fields.setRandomAddressEmail(signInPage.setRandomAddressEmail());
         fields.setRandomPassword(signInPage.setRandomPassword());
         signInPage.clickSignInButton();
 
+        //then
         Assert.assertEquals((signInPage.getRandomName() + " " + signInPage.getRandomLastName()), menuPage.getAccountName());
     }
 
     @Test
     public void showValidationPopUpForEmail() {
-
+        //given
         menuPage.goToSignIn();
+        //when
+
         signInPage.clickSignInButton();
 
-        Assert.assertEquals(fields.getValidationMessageFromAddressEmail(), "Wypełnij to pole.");
+        //then
+        Assert.assertEquals(fields.getValidationMessageFromAddressEmail(), SUCCESS_VALIDATION_MESSAGE);
     }
-
 }

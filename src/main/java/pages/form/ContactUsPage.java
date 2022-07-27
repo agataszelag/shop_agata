@@ -1,10 +1,12 @@
-package pages;
+package pages.form;
 
 import models.Subject;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import pages.BasePage;
 
+import java.io.File;
 import java.util.List;
 
 public class ContactUsPage extends BasePage {
@@ -15,30 +17,25 @@ public class ContactUsPage extends BasePage {
 
     @FindBy(css = "#left-column>.contact-rich>h4")
     private WebElement contactUsPageHeader;
-
-    @FindBy(className = "form-control-select")
+    @FindBy(css = ".form-control-select")
     private List<WebElement> subjectForm;
-
     @FindBy(css = "input[type='email']")
     private WebElement addressEmail;
-
     @FindBy(css = "textarea[name='message']")
     private WebElement messagebox;
-
-    @FindBy(className = "btn-primary")
+    @FindBy(css = ".btn-primary")
     private WebElement sendButton;
-
-    @FindBy(className = "alert-success")
+    @FindBy(css = ".alert-success")
     private WebElement alertSuccess;
-
-    @FindBy(className = "alert-danger")
+    @FindBy(css = ".alert-danger")
     private WebElement alertFailed;
-
     @FindBy(css = "input[placeholder='your@email.com']")
     private WebElement placeholderAddressEmail;
-
     @FindBy(css = "textarea[placeholder='How can we help?']")
     private WebElement placeholderMessageBox;
+
+    @FindBy(css = "input[type = 'file']")
+    private WebElement inputFile;
 
     public String getContactUsPageHeader(){
         return contactUsPageHeader.getText();
@@ -78,5 +75,9 @@ public class ContactUsPage extends BasePage {
 
     public boolean showPlaceholderMessageBox(){
         return placeholderMessageBox.isDisplayed();
+    }
+
+    public void uploadFile(File file){
+        inputFile.sendKeys(file.getAbsolutePath());
     }
 }

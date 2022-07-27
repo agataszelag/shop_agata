@@ -1,9 +1,10 @@
-package pages;
+package pages.form;
 
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import pages.BasePage;
 
 
 public class ResetPasswordPage extends BasePage {
@@ -13,13 +14,10 @@ public class ResetPasswordPage extends BasePage {
 
     @FindBy(className = "page-header")
     private WebElement resetPasswordPageHeader;
-
     @FindBy(className = "hidden-xs-down")
     private WebElement sendResetLinkButton;
-
     @FindBy(className = "material-icons")
     private WebElement backToLoginButton;
-
     @FindBy(className = "item")
     private WebElement alertSuccess;
 

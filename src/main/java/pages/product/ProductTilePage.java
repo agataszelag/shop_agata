@@ -18,8 +18,7 @@ public class ProductTilePage extends BasePage {
     @FindBy(className = "regular-price")
     private List<WebElement> regularPrice;
 
-
-    public void clickProductName(String name){
+    public void clickProductTitle(String name){
         for(WebElement productTitle : productTitle){
             if(productTitle.getText().contains(name)){
                 click(productTitle);
@@ -27,5 +26,4 @@ public class ProductTilePage extends BasePage {
             }
         }
     }
-    
 }

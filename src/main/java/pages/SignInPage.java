@@ -16,10 +16,8 @@ public class SignInPage extends BasePage {
 
     @FindBy(css = "#main>.page-header>h1")
     private WebElement signUpPageHeader;
-
     @FindBy(id = "submit-login")
     private WebElement signInButton;
-
     @FindBy(css = "a[href*='password']")
     private WebElement forgotPasswordButton;
 
